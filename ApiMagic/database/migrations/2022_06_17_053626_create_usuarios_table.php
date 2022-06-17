@@ -20,7 +20,7 @@ class CreateUsuariosTable extends Migration
             $table->string('apellido_Materno');
             $table->string('correo');
             $table->string('contrasenia');
-            $table->dateTime('fecha_Nacimiento');
+            $table->date('fecha_Nacimiento');
             $table->boolean('estatus');
             $table->timestamps();
         });
