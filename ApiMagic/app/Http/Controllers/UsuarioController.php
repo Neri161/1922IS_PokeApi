@@ -41,7 +41,7 @@ class UsuarioController extends Controller
         $correo = $datos->correo;
         $contrasenia = password_hash($datos->contrasenia, PASSWORD_DEFAULT, ['cost' => 5]);
         $fechaNacimiento = $datos->fecha_Nacimiento;
-        $estatus = "";
+        $estatus = 1;
 
         $usuario = new Usuario();
         $usuario->nombre = $nombre;
