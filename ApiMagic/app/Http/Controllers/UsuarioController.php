@@ -22,7 +22,7 @@ class UsuarioController extends Controller
 
     }
 
-    public function registrarUsuario(Request $datos){
+    public function store(Request $datos){
 
         if (!$datos->nombre || !$datos->apellido_Paterno || !$datos->apellido_Materno || !$datos->correo || !$datos->fecha_Nacimiento || !$datos->contrasenia || !$datos->contrasenia2)
             return ["estatus" => "Error", "Mensaje" => "Algunos campos estan vacios"];
@@ -41,7 +41,7 @@ class UsuarioController extends Controller
         $correo = $datos->correo;
         $contrasenia = password_hash($datos->contrasenia, PASSWORD_DEFAULT);
         $fechaNacimiento = $datos->fecha_Nacimiento;
-        $estatus = "";
+        $estatus = 1;
 
         $usuario = new Usuario();
         $usuario->nombre = $nombre;
