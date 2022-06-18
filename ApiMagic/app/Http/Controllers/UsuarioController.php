@@ -22,7 +22,7 @@ class UsuarioController extends Controller
 
     }
 
-    public function store(Request $datos){
+    public function registrarUsuario(Request $datos){
 
         if (!$datos->nombre || !$datos->apellido_Paterno || !$datos->apellido_Materno || !$datos->correo || !$datos->fecha_Nacimiento || !$datos->contrasenia || !$datos->contrasenia2)
             return ["estatus" => "Error", "Mensaje" => "Algunos campos estan vacios"];
