@@ -21,6 +21,7 @@
         android:textSize="45dp" />
 
     <com.google.android.material.textfield.TextInputLayout
+        style="?attr/textInputFilledStyle"
         android:id="@+id/in_nombre"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -38,11 +39,11 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
+        style="?attr/textInputFilledStyle"
         android:id="@+id/in_apellidoP"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Apellido Paterno"
-
         app:startIconContentDescription="string"
         android:layout_weight="1">
 
@@ -53,6 +54,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
+        style="?attr/textInputFilledStyle"
         android:id="@+id/in_apellidoM"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -67,7 +69,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/in_fechaNacimieto"
+        style="?attr/textInputFilledStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Fecha de nacimiento"
@@ -76,12 +78,15 @@
         android:layout_weight="1">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/in_fechaNacimieto"
+            android:onClick="onClickFechaNacimiento"
             android:inputType="textShortMessage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
+        style="?attr/textInputFilledStyle"
         android:id="@+id/in_correo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -104,6 +109,7 @@
         android:layout_weight="1"
         >
         <com.google.android.material.textfield.TextInputLayout
+            style="?attr/textInputFilledStyle"
             android:id="@+id/in_contrasenia1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -123,6 +129,7 @@
             android:layout_height="wrap_content"/>
 
         <com.google.android.material.textfield.TextInputLayout
+            style="?attr/textInputFilledStyle"
             android:id="@+id/in_contrasenia2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -165,8 +172,6 @@
             />
 
     </LinearLayout>
-
-
 
     <Button
         android:id="@+id/btn_Registrar"
