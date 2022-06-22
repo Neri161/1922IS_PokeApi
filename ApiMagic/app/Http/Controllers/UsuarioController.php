@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\VerificacionEmail;
 use App\Models\Usuario;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 
 class UsuarioController extends Controller
@@ -51,6 +53,7 @@ class UsuarioController extends Controller
                     return ["estatus" => "Error", "mensaje" => "Las contrasenias no son iguales"];
 
                 $codigo_confirmacion = substr(str_shuffle($caracteres),0, 64);
+                $datos["codigo_confirmacion"] = $codigo_confirmacion;
                 //Se registran los datos
                 $usuario = new Usuario();
                 $usuario->nombre = $datos->nombre;
@@ -60,12 +63,27 @@ class UsuarioController extends Controller
                 $usuario->contrasenia = password_hash($datos->contrasenia, PASSWORD_DEFAULT, ['cost' => 5]);
                 $usuario->fecha_Nacimiento = $datos->fecha_Nacimiento;
                 $usuario->estatus = 1;
-                $usuario->codigo_confirmacion = $codigo_confirmacion;
+                $usuario->codigo_confirmacion = $datos->codigo_confirmacion;
+                $nombre = $datos->nombre ." ". $datos->apellido_Paterno ." ". $datos->apellido_Materno;
+                Mail::to($datos->correo)->send(new VerificacionEmail($nombre, $codigo_confirmacion));
                 $usuario->save();
                 return ["mensaje" => "Cuenta creada"];
             }
         }catch (Exception $e){
             return (['estatus' => "Error", 'mensaje' => "Algo salio mal intenta de nuevo"]);
+        }
+    }
+    //Funcion para verificar email
+    public function verificacionMail($codigo){
+        $usuario = Usuario::where('codigo_confirmacion', $codigo)->first();
+        if ($usuario){
+            $usuario->confirmado = true;
+            $usuario->codigo_confirmacion = null;
+            $usuario->save();
+            return \response("Cuenta verificada, vuelve a la aplicacion", 201);
+        }
+        else{
+            return \response("La cuenta ya ha sido verificada");
         }
     }
 }
