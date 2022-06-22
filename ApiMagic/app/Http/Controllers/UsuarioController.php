@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\RecuperarMailable;
 use App\Mail\VerificacionEmail;
 use App\Models\Usuario;
 use Exception;
@@ -104,6 +105,33 @@ class UsuarioController extends Controller
         $usuario->token_recovery = $codigo;
         $usuario->save();
         Mail::to($usuario->correo)->send(new RecuperarMailable($usuario));
-        return view('codigo');
+        return ["estatus" => "success", "mensaje" => "¡El correo se a enviado"];
+    }
+    public function codigo(Request $datos)
+    {
+        if (!$datos->codigo)
+            return ["estatus" => "error", "mensaje" => "¡El ingresa el codigo!"];
+
+        $usuario = Usuario::where('token_recovery', $datos->codigo)->first();
+
+        if (!$usuario)
+            return ["estatus" => "error", "mensaje" => "¡Error en el codigo!"];
+
+        return  ["estatus" => "success","codigo" => $datos->codigo];
+    }
+    public function cambio(Request $datos)
+    {
+        if (!$datos->contrasenia || !$datos->contrasenia2)
+            return ["estatus" => "error", "mensaje" => "¡Completa los campos!"];
+
+        if ($datos->contrasenia != $datos->contrasenia2)
+            return ["estatus" => "error", "mensaje" => "¡Las contraseñas no son iguales!"];
+
+        $usuario = Usuario::where('token_recovery', $datos->codigo)->first();
+        $usuario->contrasenia = password_hash($datos->contrasenia, PASSWORD_DEFAULT, ['cost' => 5]);
+        $usuario->token_recovery = null;
+        $usuario->save();
+
+        return ["estatus" => "success", "mensaje" => "¡Contraseña cambiada!"];
     }
 }
