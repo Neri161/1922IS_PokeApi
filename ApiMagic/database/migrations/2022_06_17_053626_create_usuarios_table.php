@@ -24,6 +24,7 @@ class CreateUsuariosTable extends Migration
             $table->boolean('estatus');
             $table->boolean('confirmado')->default(0);
             $table->string('codigo_confirmacion')->nullable();
+            $table->text('token_recovery')->nullable();
             $table->timestamps();
         });
     }

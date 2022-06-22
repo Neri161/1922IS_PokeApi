@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class VerificacionEmail extends Mailable
+class RecuperarMailable extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -29,7 +29,7 @@ class VerificacionEmail extends Mailable
      */
     public function build()
     {
-        //retorna a la vista para el email y pasa datos
-        return $this->subject('Validar Cuenta Magic')
-            ->view('verificacionEmail');    }
+        return $this->subject('Magic Recuperar Contraseña')
+            ->view('recuperar');
+    }
 }

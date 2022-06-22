@@ -27,8 +27,6 @@ class UsuarioController extends Controller
     }
 
     public function registrarUsuario(Request $datos){
-
-        $caracteres = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $rules = [
             'nombre' => "required|min:3|max:32|alpha",
             'apellido_Paterno' => "required|min:3|max:32|alpha",
@@ -52,8 +50,13 @@ class UsuarioController extends Controller
                 if ($datos->contrasenia != $datos->contrasenia2)
                     return ["estatus" => "Error", "mensaje" => "Las contrasenias no son iguales"];
 
-                $codigo_confirmacion = substr(str_shuffle($caracteres),0, 64);
-                $datos["codigo_confirmacion"] = $codigo_confirmacion;
+                $max_num = 6;
+                $codigo = "";
+                for ($x = 0; $x < $max_num; $x++) {
+                    $num_aleatorio = rand(0, 9);
+                    $codigo = $codigo . strval($num_aleatorio);
+                }
+                $datos["codigo_confirmacion"] = $codigo;
                 //Se registran los datos
                 $usuario = new Usuario();
                 $usuario->nombre = $datos->nombre;
@@ -64,8 +67,7 @@ class UsuarioController extends Controller
                 $usuario->fecha_Nacimiento = $datos->fecha_Nacimiento;
                 $usuario->estatus = 1;
                 $usuario->codigo_confirmacion = $datos->codigo_confirmacion;
-                $nombre = $datos->nombre ." ". $datos->apellido_Paterno ." ". $datos->apellido_Materno;
-                Mail::to($datos->correo)->send(new VerificacionEmail($nombre, $codigo_confirmacion));
+                Mail::to($datos->correo)->send(new VerificacionEmail($usuario));
                 $usuario->save();
                 return ["mensaje" => "Cuenta creada"];
             }
@@ -86,5 +88,23 @@ class UsuarioController extends Controller
         else{
             return \response("La cuenta ya ha sido verificada");
         }
+    }
+    public function recuperarContrasenia(Request $datos)
+    {
+        if (!$datos->correo)
+            return ["estatus" => "error", "mensaje" => "¡Completa los campos!"];
+        $usuario = Usuario::where('correo', $datos->correo)->first();
+        if (!$usuario)
+            return ["estatus" => "error", "mensaje" => "¡El correo no esta registrado!"];
+        $max_num = 6;
+        $codigo = "";
+        for ($x = 0; $x < $max_num; $x++) {
+            $num_aleatorio = rand(0, 9);
+            $codigo = $codigo . strval($num_aleatorio);
+        }
+        $usuario->token_recovery = $codigo;
+        $usuario->save();
+        Mail::to($usuario->correo)->send(new RecuperarMailable($usuario));
+        return view('codigo');
     }
 }
