@@ -7,7 +7,7 @@
 <h2>Confirmacion de correo electronico</h2>
 <p>Hola {{$nombre}}</p>
 <p>Recientemente se uso tu correo para registrarse en una aplicacion</p>
-<p>En caso de haber sido tu has clic en confirmar</p>
+<p>Presiona el enlace de abajo para confirmar</p>
 <a href="{{ route('verificacion.mail',["codigo"=> $codigo]  )}}">
     Clic para confirmar tu email
 </a>

@@ -75,6 +75,7 @@ class UsuarioController extends Controller
     }
     //Funcion para verificar email
     public function verificacionMail($codigo){
+        //Valida el codigo
         $usuario = Usuario::where('codigo_confirmacion', $codigo)->first();
         if ($usuario){
             $usuario->confirmado = true;

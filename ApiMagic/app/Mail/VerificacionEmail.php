@@ -31,6 +31,7 @@ class VerificacionEmail extends Mailable
      */
     public function build()
     {
+        //retorna a la vista para el email y pasa datos
         return $this->view('verificacionEmail')->with(['nombre' => $this->nombre])->with(['codigo'=> $this->codigo]);
     }
 }
