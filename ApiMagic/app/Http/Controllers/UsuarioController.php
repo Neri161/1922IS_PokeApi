@@ -80,7 +80,6 @@ class UsuarioController extends Controller
         //Valida el codigo
         $usuario = Usuario::where('codigo_confirmacion', $codigo)->first();
         if ($usuario){
-            $usuario->confirmado = true;
             $usuario->codigo_confirmacion = null;
             $usuario->save();
             return \response("Cuenta verificada, vuelve a la aplicacion", 201);

@@ -22,7 +22,6 @@ class CreateUsuariosTable extends Migration
             $table->string('contrasenia');
             $table->date('fecha_Nacimiento');
             $table->boolean('estatus');
-            $table->boolean('confirmado')->default(0);
             $table->string('codigo_confirmacion')->nullable();
             $table->text('token_recovery')->nullable();
             $table->timestamps();
