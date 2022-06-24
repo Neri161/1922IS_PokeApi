@@ -6,13 +6,12 @@ public class Usuario {
     private String apellido_Paterno;
     private String apellido_Materno;
     private String correo;
-    private String contrsenia;
-    private String contrsenia2;
+    private String contrasenia;
+    private String contrasenia2;
     private String fecha_Nacimiento;
     private String status;
     private String codigo_confirmacion;
     private String token_recovery;
-    private String updateat;
     private String create_at;
     private String update_at;
     private String estatus;
@@ -21,19 +20,18 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(int ID, String nombre, String apellido_Paterno, String apellido_Materno, String correo, String contrsenia, String contrsenia2, String fecha_Nacimiento, String status, String codigo_confirmacion, String token_recovery, String updateat, String create_at, String update_at, String estatus, String mensaje) {
+    public Usuario(int ID, String nombre, String apellido_Paterno, String apellido_Materno, String correo, String contrasenia, String contrasenia2, String fecha_Nacimiento, String status, String codigo_confirmacion, String token_recovery, String create_at, String update_at, String estatus, String mensaje) {
         this.ID = ID;
         this.nombre = nombre;
         this.apellido_Paterno = apellido_Paterno;
         this.apellido_Materno = apellido_Materno;
         this.correo = correo;
-        this.contrsenia = contrsenia;
-        this.contrsenia2 = contrsenia2;
+        this.contrasenia = contrasenia;
+        this.contrasenia2 = contrasenia2;
         this.fecha_Nacimiento = fecha_Nacimiento;
         this.status = status;
         this.codigo_confirmacion = codigo_confirmacion;
         this.token_recovery = token_recovery;
-        this.updateat = updateat;
         this.create_at = create_at;
         this.update_at = update_at;
         this.estatus = estatus;
@@ -80,20 +78,20 @@ public class Usuario {
         this.correo = correo;
     }
 
-    public String getContrsenia() {
-        return contrsenia;
+    public String getContrasenia() {
+        return contrasenia;
     }
 
-    public void setContrsenia(String contrsenia) {
-        this.contrsenia = contrsenia;
+    public void setContrasenia(String contrasenia) {
+        this.contrasenia = contrasenia;
     }
 
-    public String getContrsenia2() {
-        return contrsenia2;
+    public String getContrasenia2() {
+        return contrasenia2;
     }
 
-    public void setContrsenia2(String contrsenia2) {
-        this.contrsenia2 = contrsenia2;
+    public void setContrasenia2(String contrasenia2) {
+        this.contrasenia2 = contrasenia2;
     }
 
     public String getFecha_Nacimiento() {
@@ -126,14 +124,6 @@ public class Usuario {
 
     public void setToken_recovery(String token_recovery) {
         this.token_recovery = token_recovery;
-    }
-
-    public String getUpdateat() {
-        return updateat;
-    }
-
-    public void setUpdateat(String updateat) {
-        this.updateat = updateat;
     }
 
     public String getCreate_at() {
