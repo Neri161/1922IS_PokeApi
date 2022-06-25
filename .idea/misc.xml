@@ -9,7 +9,8 @@
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.225" />
         <entry key="app/src/main/res/drawable/ic_outline_person_24.xml" value="0.225" />
         <entry key="app/src/main/res/font/poppins.xml" value="0.4166666666666667" />
-        <entry key="app/src/main/res/layout/activity_registro.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.33958333333333335" />
+        <entry key="app/src/main/res/layout/activity_registro.xml" value="0.25" />
       </map>
     </option>
   </component>

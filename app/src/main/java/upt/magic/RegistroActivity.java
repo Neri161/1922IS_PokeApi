@@ -23,34 +23,22 @@ public class RegistroActivity extends AppCompatActivity {
 
     fechaNacimiento = (EditText) findViewById(R.id.in_fechaNacimieto);
 
-    /*findViewById(R.id.in_fechaNacimieto).setOnClickListener(new View.OnClickListener() {
+    fechaNacimiento.setOnFocusChangeListener(new View.OnFocusChangeListener() {
         @Override
-        public void onClick(View view) {
-            final Calendar cldr = Calendar.getInstance();
-            int day = cldr.get(Calendar.DAY_OF_MONTH);
-            int month = cldr.get(Calendar.MONTH);
-            int year = cldr.get(Calendar.YEAR);
-            // date picker dialog
-            picker = new DatePickerDialog(RegistroActivity.this, new DatePickerDialog.OnDateSetListener() {
-                @Override
-                        public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                            fechaNacimiento.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
-                        }
-                    }, year, month, day);
-            picker.show();
+        public void onFocusChange(View view, boolean hasFocus) {
+            if(hasFocus)
+                showDatePicker();
         }
-    });*/
+    });
     }
-
-    public void muestraToas(View view){
+    public void muestraToast(View view){
         Toast.makeText(this, "Le diste click!", Toast.LENGTH_SHORT).show();
     }
-    public void onClickFechaNacimiento(View v) {
+    public void showDatePicker() {
         final Calendar cldr = Calendar.getInstance();
         int day = cldr.get(Calendar.DAY_OF_MONTH);
         int month = cldr.get(Calendar.MONTH);
         int year = cldr.get(Calendar.YEAR);
-        // date picker dialog
         picker = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
             @Override
                     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
@@ -59,5 +47,4 @@ public class RegistroActivity extends AppCompatActivity {
                 }, year, month, day);
         picker.show();
     }
-
 }
