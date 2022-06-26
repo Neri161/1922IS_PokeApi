@@ -17,11 +17,10 @@
         android:layout_weight="1"
         android:fontFamily="@font/poppins_semibold"
         android:textColor="@color/md_theme_light_primary"
-        android:text="¡Registrarse!"
+        android:text="¡Registrate!"
         android:textSize="45dp" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/in_nombre"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
@@ -31,6 +30,7 @@
         android:layout_weight="1">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/in_nombre"
             android:inputType="textShortMessage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
@@ -38,7 +38,6 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/in_apellidoP"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Primer Apellido"
@@ -46,13 +45,13 @@
         android:layout_weight="1">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/in_apellidoP"
             android:inputType="textShortMessage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/in_apellidoM"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Segundo Apellido"
@@ -60,6 +59,7 @@
         android:layout_weight="1">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/in_apellidoM"
             android:inputType="textShortMessage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
@@ -75,15 +75,12 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/in_fechaNacimieto"
-            android:onClick="onClickFechaNacimiento"
-            android:inputType="date"
+            android:editable="false"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-
-        android:id="@+id/in_correo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Correo"
@@ -92,55 +89,44 @@
         android:layout_weight="1">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/in_correo"
             android:inputType="textEmailAddress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
     </com.google.android.material.textfield.TextInputLayout>
 
-    <LinearLayout
-        android:id="@+id/layout_passwords"
+    <com.google.android.material.textfield.TextInputLayout
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        app:endIconMode="password_toggle"
+        app:startIconDrawable="@drawable/ic_outline_lock_24"
         android:layout_weight="1"
-        >
-        <com.google.android.material.textfield.TextInputLayout
+        android:hint="Contraseña">
 
+        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/in_contrasenia1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:endIconMode="password_toggle"
-            android:layout_weight="1"
-            android:hint="Contraseña">
+            android:inputType="textPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:inputType="textPassword"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+    </com.google.android.material.textfield.TextInputLayout>
 
-        </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:endIconMode="password_toggle"
+        app:startIconDrawable="@drawable/ic_outline_lock_24"
+        android:layout_weight="1"
+        android:hint="Repetir Contraseña">
 
-        <Space
-            android:layout_width="15dp"
-            android:layout_height="wrap_content"/>
-
-        <com.google.android.material.textfield.TextInputLayout
-
+        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/in_contrasenia2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:endIconMode="password_toggle"
-            android:layout_weight="1"
-            android:hint="Repetir Contraseña">
+            android:inputType="textPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:inputType="textPassword"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-    </LinearLayout>
+    </com.google.android.material.textfield.TextInputLayout>
 
     <LinearLayout
         android:id="@+id/layout_texts"
@@ -164,7 +150,7 @@
             android:text="Ingresa aquí."
             android:textColor="@color/md_theme_light_primary"
             android:textSize="15dp"
-            android:onClick="muestraToas"
+            android:onClick="muestraToast"
             />
 
     </LinearLayout>
@@ -176,7 +162,7 @@
         android:layout_marginTop="25dp"
         style="@style/Widget.Material3.Button.TonalButton"
         android:text="REGISTRARSE"
-        android:layout_weight="1"/>
+        android:layout_weight=".2"/>
 
 
 
