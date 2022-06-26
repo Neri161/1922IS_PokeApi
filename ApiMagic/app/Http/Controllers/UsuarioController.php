@@ -12,7 +12,8 @@ use Illuminate\Support\Facades\Validator;
 
 class UsuarioController extends Controller
 {
-    public function VerificarCredenciales(Request $datos){
+    public function VerificarCredenciales(Request $datos)
+    {
         try {
             if (!$datos->correo || !$datos->contrasenia)
                 return ["estatus" => "error", "mensaje" => "Completa los campos"];
@@ -20,7 +21,11 @@ class UsuarioController extends Controller
             $usuario = Usuario::where('correo', $datos->correo)->first();
 
             if (!$usuario)
-                return  ["estatus" => "error", "mensaje" => "¡El correo no esta registrado!"];
+                return ["estatus" => "error", "mensaje" => "¡El correo no esta registrado!"];
+
+            if ($usuario->status == 0)
+                return ["estatus" => "error", "mensaje" => "¡La cuenta no ha sido verificada!"];
+
             if (!password_verify($datos->contrasenia, $usuario->contrasenia))
                 return ["estatus" => "error", "mensaje" => "¡La contraseña que ingresaste es incorrecta!"];
 
@@ -31,7 +36,8 @@ class UsuarioController extends Controller
 
     }
 
-    public function registrarUsuario(Request $datos){
+    public function registrarUsuario(Request $datos)
+    {
         $rules = [
             'nombre' => "required|min:3|max:32|alpha",
             'apellido_Paterno' => "required|min:3|max:32|alpha",
@@ -44,9 +50,9 @@ class UsuarioController extends Controller
         try {
             //Validacion
             $validator = Validator::make($datos->all(), $rules);
-            if ($validator->fails()){
+            if ($validator->fails()) {
                 return $validator->errors();
-            }else{
+            } else {
                 //Se verifica si existe una cuenta ya
                 $usuario = Usuario::where('correo', $datos->correo)->first();
                 if ($usuario)
@@ -70,29 +76,32 @@ class UsuarioController extends Controller
                 $usuario->correo = $datos->correo;
                 $usuario->contrasenia = password_hash($datos->contrasenia, PASSWORD_DEFAULT, ['cost' => 5]);
                 $usuario->fecha_Nacimiento = $datos->fecha_Nacimiento;
-                $usuario->estatus = 1;
+                $usuario->status = 0;
                 $usuario->codigo_confirmacion = $datos->codigo_confirmacion;
                 Mail::to($datos->correo)->send(new VerificacionEmail($usuario));
                 $usuario->save();
                 return ["mensaje" => "Cuenta creada"];
             }
-        }catch (Exception $e){
-            return (['estatus' => "Error", 'mensaje' => "Algo salio mal intenta de nuevo ".$e]);
+        } catch (Exception $e) {
+            return (['estatus' => "Error", 'mensaje' => "Algo salio mal intenta de nuevo " . $e]);
         }
     }
+
     //Funcion para verificar email
-    public function verificacionMail($codigo){
+    public function verificacionMail($codigo)
+    {
         //Valida el codigo
         $usuario = Usuario::where('codigo_confirmacion', $codigo)->first();
-        if ($usuario){
+        if ($usuario) {
             $usuario->codigo_confirmacion = null;
+            $usuario->status = 1;
             $usuario->save();
             return \response("Cuenta verificada, vuelve a la aplicacion", 201);
-        }
-        else{
+        } else {
             return \response("La cuenta ya ha sido verificada");
         }
     }
+
     public function recuperarContrasenia(Request $datos)
     {
         if (!$datos->correo)
@@ -111,6 +120,7 @@ class UsuarioController extends Controller
         Mail::to($usuario->correo)->send(new RecuperarMailable($usuario));
         return ["estatus" => "success", "mensaje" => "¡El correo se a enviado"];
     }
+
     public function codigo(Request $datos)
     {
         if (!$datos->codigo)
@@ -121,8 +131,9 @@ class UsuarioController extends Controller
         if (!$usuario)
             return ["estatus" => "error", "mensaje" => "¡Error en el codigo!"];
 
-        return  ["estatus" => "success","codigo" => $datos->codigo];
+        return ["estatus" => "success", "codigo" => $datos->codigo];
     }
+
     public function cambio(Request $datos)
     {
         if (!$datos->contrasenia || !$datos->contrasenia2)
