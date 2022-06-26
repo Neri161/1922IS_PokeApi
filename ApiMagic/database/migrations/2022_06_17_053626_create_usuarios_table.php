@@ -16,14 +16,14 @@ class CreateUsuariosTable extends Migration
         Schema::create('usuarios', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
-            $table->string('apellido_Paterno');
-            $table->string('apellido_Materno');
+            $table->string('apellidoPaterno');
+            $table->string('apellidoMaterno');
             $table->string('correo');
             $table->string('contrasenia');
-            $table->date('fecha_Nacimiento');
-            $table->boolean('estatus');
-            $table->string('codigo_confirmacion')->nullable();
-            $table->text('token_recovery')->nullable();
+            $table->date('fechaNacimiento');
+            $table->boolean('status');
+            $table->string('codigoConfirmacion')->nullable();
+            $table->text('tokenRecovery')->nullable();
             $table->timestamps();
         });
     }
