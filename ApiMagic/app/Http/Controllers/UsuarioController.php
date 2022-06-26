@@ -40,10 +40,10 @@ class UsuarioController extends Controller
     {
         $rules = [
             'nombre' => "required|min:3|max:32|alpha",
-            'apellido_Paterno' => "required|min:3|max:32|alpha",
-            'apellido_Materno' => "required|min:3|max:32|alpha",
+            'apellidoPaterno' => "required|min:3|max:32|alpha",
+            'apellidoMaterno' => "required|min:3|max:32|alpha",
             'correo' => "required|email|min:8|max:64",
-            'fecha_Nacimiento' => "required|date",
+            'fechaNacimiento' => "required|date",
             'contrasenia' => "required|min:8|max:64",
             'contrasenia2' => "required|min:8|max:64"
         ];
