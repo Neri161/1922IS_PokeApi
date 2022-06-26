@@ -13,17 +13,21 @@ use Illuminate\Support\Facades\Validator;
 class UsuarioController extends Controller
 {
     public function VerificarCredenciales(Request $datos){
-        if (!$datos->correo || !$datos->contrasenia)
-            return ["estatus" => "error", "mensaje" => "Completa los campos"];
+        try {
+            if (!$datos->correo || !$datos->contrasenia)
+                return ["estatus" => "error", "mensaje" => "Completa los campos"];
 
-        $usuario = Usuario::where('correo', $datos->correo)->first();
+            $usuario = Usuario::where('correo', $datos->correo)->first();
 
-        if (!$usuario)
-            return  ["estatus" => "error", "mensaje" => "¡El correo no esta registrado!"];
-        if (!password_verify($datos->contrasenia, $usuario->contrasenia))
-            return ["estatus" => "error", "mensaje" => "¡La contraseña que ingresaste es incorrecta!"];
+            if (!$usuario)
+                return  ["estatus" => "error", "mensaje" => "¡El correo no esta registrado!"];
+            if (!password_verify($datos->contrasenia, $usuario->contrasenia))
+                return ["estatus" => "error", "mensaje" => "¡La contraseña que ingresaste es incorrecta!"];
 
-        return $usuario;
+            return $usuario;
+        } catch (Exception $e) {
+            return (['estatus' => "Error", 'mensaje' => "Algo salio mal intenta de nuevo " . $e]);
+        }
 
     }
 
@@ -73,7 +77,7 @@ class UsuarioController extends Controller
                 return ["mensaje" => "Cuenta creada"];
             }
         }catch (Exception $e){
-            return (['estatus' => "Error", 'mensaje' => "Algo salio mal intenta de nuevo"]);
+            return (['estatus' => "Error", 'mensaje' => "Algo salio mal intenta de nuevo ".$e]);
         }
     }
     //Funcion para verificar email
