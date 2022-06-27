@@ -10,8 +10,8 @@
 </head>
 <body>
     <div class="container col-12">
-        <h3 class="text-justify">Hola {{$data->nombre}} {{$data->apellido_Paterno}} tu codigo para cambiar tu contraseña es:</h3>
-        <h2 class="text-center"> {{$data->token_recovery}}</h2>
+        <h3 class="text-justify">Hola {{$data->nombre}} {{$data->apellidoPaterno}} tu codigo para cambiar tu contraseña es:</h3>
+        <h2 class="text-center"> {{$data->tokenRecovery}}</h2>
         <img class="img-fluid" src="https://i.pinimg.com/originals/ba/e7/b7/bae7b7c14959c102d8127d5f8a9a6066.gif">
     </div>
 

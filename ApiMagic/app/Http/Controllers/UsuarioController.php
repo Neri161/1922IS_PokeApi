@@ -31,9 +31,9 @@ class UsuarioController extends Controller
 
             return $usuario;
         } catch (Exception $e) {
-            return (['estatus' => "Error", 'mensaje' => "Algo salio mal intenta de nuevo " . $e]);
+            $error = explode("in", $e);
+            return (['estatus' => "Error", 'mensaje' => "Algo salio mal intenta de nuevo |" . $error[0]]);
         }
-
     }
 
     public function registrarUsuario(Request $datos)
@@ -67,23 +67,24 @@ class UsuarioController extends Controller
                     $num_aleatorio = rand(0, 9);
                     $codigo = $codigo . strval($num_aleatorio);
                 }
-                $datos["codigo_confirmacion"] = $codigo;
+                $datos["codigoConfirmacion"] = $codigo;
                 //Se registran los datos
                 $usuario = new Usuario();
                 $usuario->nombre = $datos->nombre;
-                $usuario->apellido_Paterno = $datos->apellido_Paterno;
-                $usuario->apellido_Materno = $datos->apellido_Materno;
+                $usuario->apellidoPaterno = $datos->apellidoPaterno;
+                $usuario->apellidoMaterno = $datos->apellidoMaterno;
                 $usuario->correo = $datos->correo;
                 $usuario->contrasenia = password_hash($datos->contrasenia, PASSWORD_DEFAULT, ['cost' => 5]);
-                $usuario->fecha_Nacimiento = $datos->fecha_Nacimiento;
+                $usuario->fechaNacimiento = $datos->fechaNacimiento;
                 $usuario->status = 0;
-                $usuario->codigo_confirmacion = $datos->codigo_confirmacion;
+                $usuario->codigoConfirmacion = $datos->codigoConfirmacion;
                 Mail::to($datos->correo)->send(new VerificacionEmail($usuario));
                 $usuario->save();
                 return ["mensaje" => "Cuenta creada"];
             }
         } catch (Exception $e) {
-            return (['estatus' => "Error", 'mensaje' => "Algo salio mal intenta de nuevo " . $e]);
+            $error = explode("in", $e);
+            return (['estatus' => "Error", 'mensaje' => "Algo salio mal intenta de nuevo |" . $error[0]]);
         }
     }
 
@@ -91,9 +92,9 @@ class UsuarioController extends Controller
     public function verificacionMail($codigo)
     {
         //Valida el codigo
-        $usuario = Usuario::where('codigo_confirmacion', $codigo)->first();
+        $usuario = Usuario::where('codigoConfirmacion', $codigo)->first();
         if ($usuario) {
-            $usuario->codigo_confirmacion = null;
+            $usuario->codigoConfirmacion = null;
             $usuario->status = 1;
             $usuario->save();
             return \response("Cuenta verificada, vuelve a la aplicacion", 201);
@@ -115,7 +116,7 @@ class UsuarioController extends Controller
             $num_aleatorio = rand(0, 9);
             $codigo = $codigo . strval($num_aleatorio);
         }
-        $usuario->token_recovery = $codigo;
+        $usuario->tokenRecovery = $codigo;
         $usuario->save();
         Mail::to($usuario->correo)->send(new RecuperarMailable($usuario));
         return ["estatus" => "success", "mensaje" => "¡El correo se a enviado"];
@@ -144,7 +145,7 @@ class UsuarioController extends Controller
 
         $usuario = Usuario::where('token_recovery', $datos->codigo)->first();
         $usuario->contrasenia = password_hash($datos->contrasenia, PASSWORD_DEFAULT, ['cost' => 5]);
-        $usuario->token_recovery = null;
+        $usuario->tokenRecovery = null;
         $usuario->save();
 
         return ["estatus" => "success", "mensaje" => "¡Contraseña cambiada!"];

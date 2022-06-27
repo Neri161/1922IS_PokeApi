@@ -11,9 +11,6 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".LoginActivity"
-            android:exported="true" />
-        <activity
-            android:name=".RegistroActivity"
             android:screenOrientation="portrait"
             android:exported="true">
             <intent-filter>
@@ -21,6 +18,12 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".RegistroActivity"
+            android:screenOrientation="portrait"
+            android:exported="true">
+
         </activity>
 
         <meta-data
