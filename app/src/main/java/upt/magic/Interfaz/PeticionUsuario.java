@@ -11,12 +11,12 @@ import upt.magic.Model.Usuario;
 public interface PeticionUsuario {
     @POST("registroForm")
     Call<List<Usuario>> registrar(@Query("nombre") String nombre,
-                                  @Query("apellido_Paterno") String paterno,
-                                  @Query("apellido_Materno") String materno,
+                                  @Query("apellidoPaterno") String paterno,
+                                  @Query("apellidoMaterno") String materno,
                                   @Query("correo") String correo,
                                   @Query("contrasenia") String contrasenia,
                                   @Query("contrasenia2") String contrasenia2,
-                                  @Query("fecha_Nacimiento") String fecha_Nacimiento);
+                                  @Query("fechaNacimiento") String fecha_Nacimiento);
     @POST("verificarCredenciales")
     Call<List<Usuario>> verificar(@Query("correo") String correo,
                                   @Query("contrasenia") String contrasenia);

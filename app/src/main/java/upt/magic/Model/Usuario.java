@@ -3,15 +3,15 @@ package upt.magic.Model;
 public class Usuario {
     private int ID;
     private String nombre;
-    private String apellido_Paterno;
-    private String apellido_Materno;
+    private String apellidoPaterno;
+    private String apellidoMaterno;
     private String correo;
     private String contrasenia;
     private String contrasenia2;
-    private String fecha_Nacimiento;
+    private String fechaNacimiento;
     private String status;
-    private String codigo_confirmacion;
-    private String token_recovery;
+    private String codigoConfirmacion;
+    private String tokenRecovery;
     private String create_at;
     private String update_at;
     private String estatus;
@@ -20,18 +20,18 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(int ID, String nombre, String apellido_Paterno, String apellido_Materno, String correo, String contrasenia, String contrasenia2, String fecha_Nacimiento, String status, String codigo_confirmacion, String token_recovery, String create_at, String update_at, String estatus, String mensaje) {
+    public Usuario(int ID, String nombre, String apellidoPaterno, String apellidoMaterno, String correo, String contrasenia, String contrasenia2, String fechaNacimiento, String status, String codigoConfirmacion, String tokenRecovery, String create_at, String update_at, String estatus, String mensaje) {
         this.ID = ID;
         this.nombre = nombre;
-        this.apellido_Paterno = apellido_Paterno;
-        this.apellido_Materno = apellido_Materno;
+        this.apellidoPaterno = apellidoPaterno;
+        this.apellidoMaterno = apellidoMaterno;
         this.correo = correo;
         this.contrasenia = contrasenia;
         this.contrasenia2 = contrasenia2;
-        this.fecha_Nacimiento = fecha_Nacimiento;
+        this.fechaNacimiento = fechaNacimiento;
         this.status = status;
-        this.codigo_confirmacion = codigo_confirmacion;
-        this.token_recovery = token_recovery;
+        this.codigoConfirmacion = codigoConfirmacion;
+        this.tokenRecovery = tokenRecovery;
         this.create_at = create_at;
         this.update_at = update_at;
         this.estatus = estatus;
@@ -54,20 +54,20 @@ public class Usuario {
         this.nombre = nombre;
     }
 
-    public String getApellido_Paterno() {
-        return apellido_Paterno;
+    public String getApellidoPaterno() {
+        return apellidoPaterno;
     }
 
-    public void setApellido_Paterno(String apellido_Paterno) {
-        this.apellido_Paterno = apellido_Paterno;
+    public void setApellidoPaterno(String apellidoPaterno) {
+        this.apellidoPaterno = apellidoPaterno;
     }
 
-    public String getApellido_Materno() {
-        return apellido_Materno;
+    public String getApellidoMaterno() {
+        return apellidoMaterno;
     }
 
-    public void setApellido_Materno(String apellido_Materno) {
-        this.apellido_Materno = apellido_Materno;
+    public void setApellidoMaterno(String apellidoMaterno) {
+        this.apellidoMaterno = apellidoMaterno;
     }
 
     public String getCorreo() {
@@ -94,12 +94,12 @@ public class Usuario {
         this.contrasenia2 = contrasenia2;
     }
 
-    public String getFecha_Nacimiento() {
-        return fecha_Nacimiento;
+    public String getFechaNacimiento() {
+        return fechaNacimiento;
     }
 
-    public void setFecha_Nacimiento(String fecha_Nacimiento) {
-        this.fecha_Nacimiento = fecha_Nacimiento;
+    public void setFechaNacimiento(String fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
     }
 
     public String getStatus() {
@@ -110,20 +110,20 @@ public class Usuario {
         this.status = status;
     }
 
-    public String getCodigo_confirmacion() {
-        return codigo_confirmacion;
+    public String getCodigoConfirmacion() {
+        return codigoConfirmacion;
     }
 
-    public void setCodigo_confirmacion(String codigo_confirmacion) {
-        this.codigo_confirmacion = codigo_confirmacion;
+    public void setCodigoConfirmacion(String codigoConfirmacion) {
+        this.codigoConfirmacion = codigoConfirmacion;
     }
 
-    public String getToken_recovery() {
-        return token_recovery;
+    public String getTokenRecovery() {
+        return tokenRecovery;
     }
 
-    public void setToken_recovery(String token_recovery) {
-        this.token_recovery = token_recovery;
+    public void setTokenRecovery(String tokenRecovery) {
+        this.tokenRecovery = tokenRecovery;
     }
 
     public String getCreate_at() {
