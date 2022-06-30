@@ -13,10 +13,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".RestablecerActivity"
+            android:name=".CodigoActivity"
             android:exported="true"
             android:screenOrientation="portrait">
+
         </activity>
+        <activity
+            android:name=".RestablecerActivity"
+            android:exported="true"
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".LoginActivity"
             android:exported="true"
@@ -30,7 +35,7 @@
         <activity
             android:name=".RegistroActivity"
             android:exported="true"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
 
         <meta-data
             android:name="preloaded_fonts"

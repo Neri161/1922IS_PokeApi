@@ -1,6 +1,7 @@
 package upt.magic.Interfaz;
 
 import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -18,15 +19,19 @@ public interface PeticionUsuario {
                                   @Query("contrasenia") String contrasenia,
                                   @Query("contrasenia2") String contrasenia2,
                                   @Query("fechaNacimiento") String fecha_Nacimiento*/);
+
     @POST("verificarCredenciales")
     Call<Usuario> verificar(@Query("correo") String correo,
-                                  @Query("contrasenia") String contrasenia);
+                            @Query("contrasenia") String contrasenia);
+
     @POST("recuperarContrasenia")
     Call<Usuario> recuperar(@Query("correo") String correo);
+
     @POST("codigo")
-    Call<List<Usuario>> codigo(@Query("codigo") String codigo);
+    Call<Usuario> codigo(@Query("codigo") String codigo);
+
     @POST("cambio/codigo")
-    Call<List<Usuario>> cambio(@Query("codigo") String codigo,
-                               @Query("contrasenia") String contrasenia,
-                               @Query("contrasenia2") String contrasenia2);
+    Call<Usuario> cambio(@Query("codigo") String codigo,
+                         @Query("contrasenia") String contrasenia,
+                         @Query("contrasenia2") String contrasenia2);
 }

@@ -59,7 +59,8 @@ public class RestablecerActivity extends AppCompatActivity {
                                 Toast.makeText(getApplicationContext(), "Error intentalo de nuevo", Toast.LENGTH_LONG).show();
                             }else{
                                 Toast.makeText(getApplicationContext(),"Correo enviado",Toast.LENGTH_SHORT).show();
-                                Intent i = new Intent();
+                                Intent i = new Intent(RestablecerActivity.this,CodigoActivity.class);
+                                startActivity(i);
                             }
 
                         }

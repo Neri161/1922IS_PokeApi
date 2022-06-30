@@ -7,7 +7,7 @@
     android:padding="40dp"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".RestablecerActivity">
+    tools:context=".CodigoActivity">
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/txt_titulo"
         android:layout_width="wrap_content"
@@ -22,16 +22,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        android:hint="Correo"
-        app:startIconDrawable="@drawable/ic_outline_email_24"
+        android:hint="Codigo"
+        app:startIconDrawable="@drawable/ic_outline_lock_24"
         app:startIconContentDescription="string"
         android:layout_weight="0.00001">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/in_correo"
-            android:inputType="textShortMessage"
+            android:inputType="number"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            />
 
     </com.google.android.material.textfield.TextInputLayout>
     <Button
@@ -39,17 +40,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
+        android:layout_marginBottom="200dp"
         style="@style/Widget.Material3.Button.TonalButton"
         android:text="ENVIAR CODIGO"
         android:layout_weight="0.00002"/>
 
-    <Button
-        android:id="@+id/btn_Regresar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:layout_marginBottom="170dp"
-        style="@style/Widget.Material3.Button.TonalButton"
-        android:text="REGRESAR A LOGIN"
-        android:layout_weight="0.00002"/>
 </LinearLayout>
