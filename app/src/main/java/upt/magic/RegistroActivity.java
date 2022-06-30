@@ -53,6 +53,8 @@ public class RegistroActivity extends AppCompatActivity {
                 try {
                     rg.registrar(edNombre.getText().toString(), edApP.getText().toString(), edApM.getText().toString(), edCorreo.getText().toString(), edCont1.getText().toString(), edCont2.getText().toString(), "2001-08-13");
                     muestraToast(view,"registro exitoso");
+                    Intent intent = new Intent(RegistroActivity.this, LoginActivity.class);
+                    startActivity(intent);
                 }catch (Exception ex){
                     muestraToast(view,"Error"+ex);
                 }
