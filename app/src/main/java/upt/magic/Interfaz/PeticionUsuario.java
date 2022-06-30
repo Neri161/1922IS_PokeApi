@@ -2,6 +2,7 @@ package upt.magic.Interfaz;
 
 import java.util.List;
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
@@ -10,15 +11,15 @@ import upt.magic.Model.Usuario;
 
 public interface PeticionUsuario {
     @POST("registroForm")
-    Call<Usuario> registrar(@Query("nombre") String nombre,
+    Call<Usuario> registrar(@Body Usuario usuario/*@Query("nombre") String nombre,
                                   @Query("apellidoPaterno") String paterno,
                                   @Query("apellidoMaterno") String materno,
                                   @Query("correo") String correo,
                                   @Query("contrasenia") String contrasenia,
                                   @Query("contrasenia2") String contrasenia2,
-                                  @Query("fechaNacimiento") String fecha_Nacimiento);
+                                  @Query("fechaNacimiento") String fecha_Nacimiento*/);
     @POST("verificarCredenciales")
-    Call<List<Usuario>> verificar(@Query("correo") String correo,
+    Call<Usuario> verificar(@Query("correo") String correo,
                                   @Query("contrasenia") String contrasenia);
     @POST("recuperarContrasenia")
     Call<List<Usuario>> recuperar(@Query("correo") String correo);
