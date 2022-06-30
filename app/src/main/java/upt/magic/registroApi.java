@@ -10,13 +10,13 @@ import upt.magic.Model.Usuario;
 
 public class registroApi {
     public String error;
-    public static String URL = "https://viqoxwhm.lucusvirtual.es/public/api/";
+    public static String URL = "https://jnmlvuvn.lucusvirtual.es/api/auth/";
     public static Retrofit varRetro;
 
-    public void registrar(Usuario usuario) {
+    public void registrar(String Nombre, String ApellidoPaterno, String ApellidoMaterno, String Correo, String Contrasenia, String Contrasenia2, String FechaNacimiento) {
         varRetro = new Retrofit.Builder().baseUrl(URL).addConverterFactory(GsonConverterFactory.create()).build();
         PeticionUsuario consApi = varRetro.create(PeticionUsuario.class);
-        Usuario usu=new Usuario("Alfred","Lopez","Bautista","sorrow2287@gmail.com","Alfredo1234$","Alfredo1234$","2001-08-13");
+        Usuario usu=new Usuario(Nombre, ApellidoPaterno, ApellidoMaterno, Correo,Contrasenia, Contrasenia2, FechaNacimiento);
         Call<Usuario> call = consApi.registrar(usu);
             call.enqueue(new Callback<Usuario>() {
                 @Override
