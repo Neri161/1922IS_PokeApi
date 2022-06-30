@@ -10,7 +10,7 @@ import upt.magic.Model.Usuario;
 
 public interface PeticionUsuario {
     @POST("registroForm")
-    Call<List<Usuario>> registrar(@Query("nombre") String nombre,
+    Call<Usuario> registrar(@Query("nombre") String nombre,
                                   @Query("apellidoPaterno") String paterno,
                                   @Query("apellidoMaterno") String materno,
                                   @Query("correo") String correo,
