@@ -31,22 +31,22 @@
 
     <div class="container contenido border">
         <h1>URL de acceso</h1>
-        https://viqoxwhm.lucusvirtual.es/public/api/
+        https://jnmlvuvn.lucusvirtual.es/api/auth/
     </div>
     <div class="container contenido border text-justify">
         <h2>Registrar usuario | Metodo POST</h2>
-        <p>https://viqoxwhm.lucusvirtual.es/public/api/registroForm</p>
+        <p>https://jnmlvuvn.lucusvirtual.es/api/auth/registroForm</p>
         <p>Este metodo proporciona el registro del usuario con los siguientes atributos</p>
         <div class="container border">
             <h3>Atributos</h3>
             <ul>
                 <li>nombre</li>
-                <li>apellido_Paterno</li>
-                <li>apellido_Materno</li>
+                <li>apellidoPaterno</li>
+                <li>apellidoMaterno</li>
                 <li>correo</li>
                 <li>contrasenia</li>
                 <li>contrasenia2</li>
-                <li>fecha_Nacimiento</li>
+                <li>fechaNacimiento</li>
             </ul>
             Una vez teniendo esos datos la api mandara un correo para verificar el registro. Una vez validado el correo
             aparecera una leyenda
@@ -56,7 +56,7 @@
     </div>
     <div class="container contenido border text-justify">
         <h2>Verificar Credenciales | Metodo POST</h2>
-        <p>https://viqoxwhm.lucusvirtual.es/public/api/verificarCredenciales</p>
+        <p>https://jnmlvuvn.lucusvirtual.es/api/auth/verificarCredenciales</p>
         <p>Este metodo proporciona el acceso del usuario con los siguientes atributos</p>
         <div class="container border">
             <h3>Atributos</h3>
@@ -67,25 +67,25 @@
             si los datos son correctos la api madara un JSON con los datos del usuario
             <pre class="container border"><code>
         {
-        "id": 2,
-        "nombre": "Alejandro",
-        "apellido_Paterno": "Esperon",
-        "apellido_Materno": "Macoco",
-        "correo": "nerialvareze@gmail.com",
-        "contrasenia": "$2y$05$oZBECqb7CpeSX.nbH8KRd.qERi6nDcU1rnNtlELDAF5RaVw5XXzQm",
-        "fecha_Nacimiento": "2001-06-01",
-        "estatus": 1,
-        "codigo_confirmacion": null,
-        "token_recovery": null,
-        "created_at": "2022-06-22T05:47:18.000000Z",
-        "updated_at": "2022-06-22T05:48:01.000000Z"
-        }
+    "id": 1,
+    "nombre": "Pedro",
+    "apellidoPaterno": "Pepe",
+    "apellidoMaterno": "Macoco",
+    "correo": "nerialvareze@gmail.com",
+    "contrasenia": "$2y$05$VOLSDskWazi2KyEWeGlFQeaceRLK6buyVTOda4vVByTD62UuaMtj.",
+    "fechaNacimiento": "2001-06-01",
+    "status": 1,
+    "codigoConfirmacion": null,
+    "tokenRecovery": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2pubWx2dXZuLmx1Y3VzdmlydHVhbC5lcy9hcGkvYXV0aC92ZXJpZmljYXJDcmVkZW5jaWFsZXMiLCJpYXQiOjE2NTY1NTcxMDQsImV4cCI6MTY1NjU2MDcwNCwibmJmIjoxNjU2NTU3MTA0LCJqdGkiOiJKTk1BMlEwampZenNhVzR2Iiwic3ViIjoiMSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.mTR6DL7rlTqYcImKuW5uNQOqysQvAue72zDhUQtZDJ4",
+    "created_at": "2022-06-30T02:44:29.000000Z",
+    "updated_at": "2022-06-30T02:44:58.000000Z"
+}
         </code></pre>
         </div>
     </div>
     <div class="container contenido border text-justify">
         <h2>Verificar Email | Metodo GET</h2>
-        <p>https://viqoxwhm.lucusvirtual.es/public/api/verificacionMail/{codigo}</p>
+        <p>https://jnmlvuvn.lucusvirtual.es/api/auth/verificacionMail/{codigo}</p>
         <p>Este metodo realiza la validacion de correo con el codigo correspondiente en la url</p>
         <div class="container border">
             <h3>Atributos</h3>
@@ -96,7 +96,7 @@
     </div>
     <div class="container contenido border text-justify">
         <h2>Recuperar Contraseña | Metodo POST</h2>
-        <p>https://viqoxwhm.lucusvirtual.es/public/api/recuperarContrasenia</p>
+        <p>https://jnmlvuvn.lucusvirtual.es/api/auth/recuperarContrasenia</p>
         <p>Este metodo crea un codigo de seguridad para cambiar la contraseña y enviarlo via email</p>
         <div class="container border">
             <h3>Atributos</h3>
@@ -107,7 +107,7 @@
     </div>
     <div class="container contenido border text-justify">
         <h2>Verificar codigo | Metodo POST</h2>
-        <p>https://viqoxwhm.lucusvirtual.es/public/api/codigo</p>
+        <p>https://jnmlvuvn.lucusvirtual.es/api/auth/codigo</p>
         <p>Este metodo valida si existe el codigo que proporciono el usuario</p>
         <div class="container border">
             <h3>Atributos</h3>
@@ -118,7 +118,7 @@
     </div>
     <div class="container contenido border text-justify">
         <h2>Cambiar Contraseña | Metodo POST</h2>
-        <p>https://viqoxwhm.lucusvirtual.es/public/api/cambio/codigo</p>
+        <p>https://jnmlvuvn.lucusvirtual.es/api/auth/cambio/codigo</p>
         <p>Este obtine el codigo y la nueva contraseña de usuario</p>
         <div class="container border">
             <h3>Atributos</h3>
