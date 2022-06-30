@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UsuarioController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -15,9 +16,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::group([
+    'prefix' => 'auth'
+], function () {
+    Route::post('register', [AuthController::class,'register']);
+    Route::post('login', [AuthController::class,'login']);
+    Route::post('logout', [AuthController::class,'logout']);
+
 });
+
 Route::post('/registroForm', [UsuarioController::class, 'registrarUsuario'])->name('registro.form');
 Route::post('/verificarCredenciales', [UsuarioController::class, 'VerificarCredenciales'])->name('login.form');
 Route::get('/verificacionMail/{codigo}', [UsuarioController::class, 'verificacionMail'])->name('verificacion.mail');
