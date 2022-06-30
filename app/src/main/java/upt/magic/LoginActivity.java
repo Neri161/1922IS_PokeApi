@@ -42,7 +42,7 @@ public class LoginActivity extends AppCompatActivity {
                 }else{
 
                     varRetro = new Retrofit.Builder()
-                            .baseUrl("https://viqoxwhm.lucusvirtual.es/public/api/")
+                            .baseUrl("https://jnmlvuvn.lucusvirtual.es/api/auth/")
                             .addConverterFactory(GsonConverterFactory.create())
                             .build();
                     PeticionUsuario peticion = varRetro.create(PeticionUsuario.class);
