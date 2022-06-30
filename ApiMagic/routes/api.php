@@ -19,16 +19,19 @@ use Illuminate\Support\Facades\Route;
 Route::group([
     'prefix' => 'auth'
 ], function () {
+    Route::post('/registroForm', [UsuarioController::class, 'registrarUsuario'])->name('registro.form');
+    Route::post('/verificarCredenciales', [UsuarioController::class, 'VerificarCredenciales'])->name('login.form');
+    Route::get('/verificacionMail/{codigo}', [UsuarioController::class, 'verificacionMail'])->name('verificacion.mail');
+    Route::post('/recuperarContrasenia', [UsuarioController::class, 'recuperarContrasenia'])->name('recuperar.contrasenia');
+    Route::post('/codigo', [UsuarioController::class, 'codigo'])->name('contrasenia');
+    Route::post('/cambio/codigo', [UsuarioController::class, 'cambio'])->name('cambio');
+    /*
     Route::post('register', [AuthController::class,'register']);
     Route::post('login', [AuthController::class,'login']);
     Route::post('logout', [AuthController::class,'logout']);
+    */
 
 });
 
-Route::post('/registroForm', [UsuarioController::class, 'registrarUsuario'])->name('registro.form');
-Route::post('/verificarCredenciales', [UsuarioController::class, 'VerificarCredenciales'])->name('login.form');
-Route::get('/verificacionMail/{codigo}', [UsuarioController::class, 'verificacionMail'])->name('verificacion.mail');
-Route::post('/recuperarContrasenia', [UsuarioController::class, 'recuperarContrasenia'])->name('recuperar.contrasenia');
-Route::post('/codigo', [UsuarioController::class, 'codigo'])->name('contrasenia');
-Route::post('/cambio/codigo', [UsuarioController::class, 'cambio'])->name('cambio');
+
 
