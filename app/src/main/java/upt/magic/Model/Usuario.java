@@ -37,7 +37,15 @@ public class Usuario {
         this.estatus = estatus;
         this.mensaje = mensaje;
     }
-
+    public Usuario(String nombre, String apellidoPaterno, String apellidoMaterno, String correo, String contrasenia, String contrasenia2, String fechaNacimiento) {
+        this.nombre = nombre;
+        this.apellidoPaterno = apellidoPaterno;
+        this.apellidoMaterno = apellidoMaterno;
+        this.correo = correo;
+        this.contrasenia = contrasenia;
+        this.contrasenia2 = contrasenia2;
+        this.fechaNacimiento = fechaNacimiento;
+    }
     public int getID() {
         return ID;
     }
