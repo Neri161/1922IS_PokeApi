@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Mail\RecuperarMailable;
 use App\Mail\VerificacionEmail;
+use App\Models\User;
 use App\Models\Usuario;
 use Exception;
 use Illuminate\Http\Request;
@@ -12,9 +13,20 @@ use Illuminate\Support\Facades\Validator;
 
 class UsuarioController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:api', ['except' => ['VerificarCredenciales','registrarUsuario','verificacionMail','recuperarContrasenia','codigo','cambio']]);
+    }
     public function VerificarCredenciales(Request $datos)
     {
         try {
+
+            $array = array('email'=>$datos->correo,'password'=> $datos->contrasenia);
+            $credentials = $array;
+            if (! $token = auth()->attempt($credentials)) {
+                return response()->json(['estatus' => 'Unauthorized'], 401);
+            }
+
             if (!$datos->correo || !$datos->contrasenia)
                 return ["estatus" => "error", "mensaje" => "Completa los campos"];
 
@@ -28,7 +40,7 @@ class UsuarioController extends Controller
 
             if (!password_verify($datos->contrasenia, $usuario->contrasenia))
                 return ["estatus" => "error", "mensaje" => "¡La contraseña que ingresaste es incorrecta!"];
-
+            $usuario->tokenRecovery = $token;
             return $usuario;
         } catch (Exception $e) {
             $error = explode("in", $e);
@@ -80,6 +92,11 @@ class UsuarioController extends Controller
                 $usuario->codigoConfirmacion = $datos->codigoConfirmacion;
                 Mail::to($datos->correo)->send(new VerificacionEmail($usuario));
                 $usuario->save();
+                $user =  new User();
+                $user->name = $datos->nombre;
+                $user->email = $datos->correo;
+                $user->password = bcrypt($datos->contrasenia);
+                $user->save();
                 return ["mensaje" => "Cuenta creada"];
             }
         } catch (Exception $e) {
