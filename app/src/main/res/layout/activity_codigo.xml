@@ -28,7 +28,7 @@
         android:layout_weight="0.00001">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/in_correo"
+            android:id="@+id/in_codigo"
             android:inputType="number"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
