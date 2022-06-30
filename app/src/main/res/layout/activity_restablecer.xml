@@ -40,7 +40,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
         style="@style/Widget.Material3.Button.TonalButton"
-        android:text="INICIAR SESION"
+        android:text="ENVIAR CODIGO"
         android:layout_weight="0.00002"/>
 
     <Button
@@ -49,6 +49,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
         style="@style/Widget.Material3.Button.TonalButton"
-        android:text="INICIAR SESION"
+        android:text="REGRESAR A LOGIN"
         android:layout_weight="0.00002"/>
 </LinearLayout>

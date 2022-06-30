@@ -22,7 +22,7 @@ public interface PeticionUsuario {
     Call<Usuario> verificar(@Query("correo") String correo,
                                   @Query("contrasenia") String contrasenia);
     @POST("recuperarContrasenia")
-    Call<List<Usuario>> recuperar(@Query("correo") String correo);
+    Call<Usuario> recuperar(@Query("correo") String correo);
     @POST("codigo")
     Call<List<Usuario>> codigo(@Query("codigo") String codigo);
     @POST("cambio/codigo")

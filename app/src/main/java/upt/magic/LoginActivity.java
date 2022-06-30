@@ -41,7 +41,6 @@ public class LoginActivity extends AppCompatActivity {
                 if (txtCorreo.getText().toString().equals(null) && txtContrasenia.toString().equals(null)){
                     Toast.makeText(getApplicationContext(), "Llena los campos", Toast.LENGTH_LONG).show();
                 }else{
-
                     varRetro = new Retrofit.Builder()
                             .baseUrl("https://jnmlvuvn.lucusvirtual.es/api/auth/")
                             .addConverterFactory(GsonConverterFactory.create())
