@@ -62,7 +62,7 @@ public class RegistroActivity extends AppCompatActivity {
                             if(edCont1.getText().toString().length()>8 && edCont1.getText().toString().length()<64){
                                 String fecha = fechaNacimiento.getText().toString();
                                 rg.registrar(edNombre.getText().toString(), edApP.getText().toString(), edApM.getText().toString(), edCorreo.getText().toString(), edCont1.getText().toString(), edCont2.getText().toString(), fecha);
-                                muestraToast(view, fecha);
+                                muestraToast(view, "registro correcto c:");
                                 Intent intent = new Intent(RegistroActivity.this, LoginActivity.class);
                                 startActivity(intent);
                             }else{
