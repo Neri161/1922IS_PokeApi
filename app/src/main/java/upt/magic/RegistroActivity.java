@@ -51,12 +51,33 @@ public class RegistroActivity extends AppCompatActivity {
             public void onClick(View view) {
                 registroApi rg = new registroApi();
                 try {
-                    rg.registrar(edNombre.getText().toString(), edApP.getText().toString(), edApM.getText().toString(), edCorreo.getText().toString(), edCont1.getText().toString(), edCont2.getText().toString(), "2001-08-13");
-                    muestraToast(view,"registro exitoso");
-                    Intent intent = new Intent(RegistroActivity.this, LoginActivity.class);
-                    startActivity(intent);
-                }catch (Exception ex){
-                    muestraToast(view,"Error"+ex);
+                    if (!edNombre.getText().toString().equals("")
+                            && !edApP.getText().toString().equals("")
+                            && !edApM.getText().toString().equals("")
+                            && !edCorreo.getText().toString().equals("")
+                            && !edCont1.getText().toString().equals("")
+                            && !edCont2.getText().toString().equals("")
+                            && !fechaNacimiento.getText().toString().equals("")) {
+                        if (edCont1.getText().toString().equals(edCont2.getText().toString())) {
+                            if(edCont1.getText().toString().length()>8 && edCont1.getText().toString().length()<64){
+                                String fecha = fechaNacimiento.getText().toString();
+                                rg.registrar(edNombre.getText().toString(), edApP.getText().toString(), edApM.getText().toString(), edCorreo.getText().toString(), edCont1.getText().toString(), edCont2.getText().toString(), fecha);
+                                muestraToast(view, "registro correcto c:");
+                                Intent intent = new Intent(RegistroActivity.this, LoginActivity.class);
+                                startActivity(intent);
+                            }else{
+                                muestraToast(view, "la contraseña debe de ser mayor a 8 caracteres y menor a 64");
+                            }
+
+                        } else {
+                            muestraToast(view, "Contraseñas incorrectas");
+                        }
+                    } else {
+                        muestraToast(view, "llena correctamente todos los campos");
+                    }
+
+                } catch (Exception ex) {
+                    muestraToast(view, "Error" + ex);
                 }
 
             }
@@ -82,7 +103,20 @@ public class RegistroActivity extends AppCompatActivity {
         picker = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                fechaNacimiento.setText(dayOfMonth + "-" + (monthOfYear + 1) + "-" + year);
+                if (monthOfYear < 9) {
+                    if (dayOfMonth < 9) {
+                        fechaNacimiento.setText(year + "-0" + (monthOfYear + 1) + "-0" + dayOfMonth);
+                    } else {
+                        fechaNacimiento.setText(year + "-0" + (monthOfYear + 1) + "-" + dayOfMonth);
+                    }
+                } else {
+                    if (dayOfMonth < 9) {
+                        fechaNacimiento.setText(year + "-" + (monthOfYear + 1) + "-0" + dayOfMonth);
+                    } else {
+                        fechaNacimiento.setText(year + "-" + (monthOfYear + 1) + "-" + dayOfMonth);
+                    }
+
+                }
             }
         }, year, month, day);
         picker.show();
