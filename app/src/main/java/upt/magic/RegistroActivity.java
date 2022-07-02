@@ -59,7 +59,7 @@ public class RegistroActivity extends AppCompatActivity {
                             && !edCont2.getText().toString().equals("")
                             && !fechaNacimiento.getText().toString().equals("")) {
                         if (edCont1.getText().toString().equals(edCont2.getText().toString())) {
-                            if(edCont1.getText().toString().length()<8 &&edCont1.getText().toString().length()>64){
+                            if(edCont1.getText().toString().length()>8 && edCont1.getText().toString().length()<64){
                                 String fecha = fechaNacimiento.getText().toString();
                                 rg.registrar(edNombre.getText().toString(), edApP.getText().toString(), edApM.getText().toString(), edCorreo.getText().toString(), edCont1.getText().toString(), edCont2.getText().toString(), fecha);
                                 muestraToast(view, fecha);
