@@ -29,7 +29,6 @@ public class RestablecerActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_restablecer);
-
         btn_recuperar = (Button) findViewById(R.id.btn_continuar);
         btn_regresar = (Button) findViewById(R.id.btn_Regresar);
         txtCorreo = (TextInputEditText) findViewById(R.id.in_correo);

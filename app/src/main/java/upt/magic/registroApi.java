@@ -1,4 +1,6 @@
 package upt.magic;
+import android.widget.Toast;
+
 import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -24,6 +26,9 @@ public class registroApi {
                     try {
                         if (response.isSuccessful()) {
                             Usuario m = response.body();
+                            if(m.getEstatus().equals("Error")){
+
+                            }
                             System.out.println(call);
                             System.out.println(m.getNombre());
                             System.out.println(m.getCorreo());
@@ -32,14 +37,6 @@ public class registroApi {
                     } catch (Exception ex) {
                         System.out.println("UWUn't " + ex);
                     }
-               /* Usuario usu=response.body();
-                String content="";
-                content+="Nombre: "+usuario.getNombre()+"\n";
-                content+="Apellido Paterno: "+usuario.getApellidoPaterno()+"\n";
-                content+="Apellido Materno: "+usuario.getApellidoMaterno()+"\n";
-                content+="Correo: "+usuario.getCorreo()+"\n";
-                content+="Contraseña: "+usuario.getContrasenia()+"\n";
-                content+="Fecha: nacimiento"+usuario.getFechaNacimiento()+"\n";*/
                 }
 
                 @Override

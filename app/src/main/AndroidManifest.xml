@@ -13,15 +13,19 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".InicioActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ContraseniaActivity"
+            android:exported="false" />
+        <activity
             android:name=".CodigoActivity"
             android:exported="true"
-            android:screenOrientation="portrait">
-
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".RestablecerActivity"
             android:exported="true"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".LoginActivity"
             android:exported="true"

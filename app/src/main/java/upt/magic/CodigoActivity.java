@@ -50,7 +50,8 @@ public class CodigoActivity extends AppCompatActivity {
                             }else{
                                 Usuario user = response.body();
                                 if(user.getEstatus().equals("success")) {
-                                    Intent i = new Intent(CodigoActivity.this, LoginActivity.class);
+                                    Intent i = new Intent(CodigoActivity.this, ContraseniaActivity.class);
+                                    i.putExtra("codigo","557680");
                                     startActivity(i);
                                 }else{
                                     Toast.makeText(getApplicationContext(), "Error intentalo de nuevo 2", Toast.LENGTH_LONG).show();

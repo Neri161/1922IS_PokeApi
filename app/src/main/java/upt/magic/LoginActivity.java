@@ -62,22 +62,13 @@ public class LoginActivity extends AppCompatActivity {
                                     }
                                 }else{
                                     String content = "";
-                                    content+= usuario.getNombre()+"\t";
-                                    content+= usuario.getApellidoPaterno()+"\t";
-                                    content+= usuario.getApellidoMaterno()+"\t";
-                                    String datos = "id: " + usuario.getID()+"t";
-                                    datos = "id: " + usuario.getID()+"t";
-                                    datos = "nombre: " + usuario.getID()+"t";
-                                    datos = "apellidoPaterno: " + usuario.getID()+"t";
-                                    datos = "apellidoMaterno: " + usuario.getID()+"t";
-                                    datos = "correo: " + usuario.getID()+"t";
-                                    datos = "contrasenia: " + usuario.getID()+"t";
-                                    datos = "fechaNacimiento: " + usuario.getID()+"t";
-                                    datos = "status: " + usuario.getID()+"t";
-                                    datos = "codigoConfirmacion: " + usuario.getID()+"t";
-                                    datos = "tokenRecovery: " + usuario.getID()+"t";
+                                    content+= usuario.getNombre()+" ";
+                                    content+= usuario.getApellidoPaterno()+" ";
+                                    content+= usuario.getApellidoMaterno()+" ";
 
                                     Toast.makeText(getApplicationContext(), "Bienvenido "+ content, Toast.LENGTH_LONG).show();
+                                    Intent i  = new Intent(LoginActivity.this,InicioActivity.class);
+                                    startActivity(i);
                                 }
                             }
 
